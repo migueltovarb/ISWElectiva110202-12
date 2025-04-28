@@ -13,6 +13,9 @@ from .admin_views import (
     MenuItemBulkStatusUpdateView
 )
 
+app_name = 'menu'
+
+
 urlpatterns = [
     # Endpoints públicos
     path('categories/', CategoryListView.as_view(), name='category-list'),

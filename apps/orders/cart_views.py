@@ -2,32 +2,24 @@ from rest_framework import generics, status, permissions
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from django.shortcuts import get_object_or_404
-
+from rest_framework.permissions import IsAuthenticated
 from .models import Cart, CartItem
 from apps.menu.models import MenuItem
 from .cart_serializers import CartSerializer, AddToCartSerializer, UpdateCartItemSerializer
 
 class CartView(APIView):
-    """
-    Endpoint para ver y gestionar el carrito del usuario actual.
-    
-    GET: Obtener el carrito actual con todos sus ítems
-    DELETE: Vaciar el carrito
-    """
-    permission_classes = [permissions.IsAuthenticated]
-    
+    permission_classes = [IsAuthenticated]
+
     def get(self, request):
-        # Obtener o crear el carrito para el usuario actual
         cart, created = Cart.objects.get_or_create(user=request.user)
         serializer = CartSerializer(cart)
-        return Response(serializer.data)
-    
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
     def delete(self, request):
-        # Vaciar el carrito
         cart, created = Cart.objects.get_or_create(user=request.user)
         cart.items.all().delete()
         serializer = CartSerializer(cart)
-        return Response(serializer.data)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
 
 class AddToCartView(APIView):
