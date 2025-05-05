@@ -1,0 +1,317 @@
+[
+    {
+        "model": "sabores.usuario",
+        "pk": 2,
+        "fields": {
+            "password": "021021sofia",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "sofia_chef",
+            "first_name": "Sofia",
+            "last_name": "Sanchez",
+            "email": "sofia@saborescaseros.com",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2024-01-01T00:00:00Z",
+            "es_chef": true,
+            "telefono": "3001234567",
+            "direccion": "Calle 10 #20-30, Bogotá"
+        }
+    },
+    {
+        "model": "sabores.usuario",
+        "pk": 3,
+        "fields": {
+            "password": "021021carlos",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "carlos_chef",
+            "first_name": "Carlos",
+            "last_name": "Rodríguez",
+            "email": "carlos@saborescaseros.com",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2024-01-01T00:00:00Z",
+            "es_chef": true,
+            "telefono": "3002345678",
+            "direccion": "Carrera 15 #45-20, Medellín"
+        }
+    },
+    {
+        "model": "sabores.usuario",
+        "pk": 4,
+        "fields": {
+            "password": "021021ana",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "ana_chef",
+            "first_name": "Ana",
+            "last_name": "Martínez",
+            "email": "ana@saborescaseros.com",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2024-01-01T00:00:00Z",
+            "es_chef": true,
+            "telefono": "3003456789",
+            "direccion": "Avenida 30 #10-15, Cali"
+        }
+    },
+    {
+        "model": "sabores.categoria",
+        "pk": 1,
+        "fields": {
+            "nombre": "Entradas",
+            "descripcion": "Deliciosas entradas tradicionales"
+        }
+    },
+    {
+        "model": "sabores.categoria",
+        "pk": 2,
+        "fields": {
+            "nombre": "Sopas",
+            "descripcion": "Sopas y caldos reconfortantes"
+        }
+    },
+    {
+        "model": "sabores.categoria",
+        "pk": 3,
+        "fields": {
+            "nombre": "Platos Principales",
+            "descripcion": "Los mejores platos de nuestra cocina"
+        }
+    },
+    {
+        "model": "sabores.categoria",
+        "pk": 4,
+        "fields": {
+            "nombre": "Carnes y Parrilla",
+            "descripcion": "Carnes a la parrilla y asados"
+        }
+    },
+    {
+        "model": "sabores.categoria",
+        "pk": 5,
+        "fields": {
+            "nombre": "Postres",
+            "descripcion": "Dulces tradicionales colombianos"
+        }
+    },
+    {
+        "model": "sabores.categoria",
+        "pk": 6,
+        "fields": {
+            "nombre": "Bebidas",
+            "descripcion": "Bebidas refrescantes y tradicionales"
+        }
+    },
+    {
+        "model": "sabores.platillo",
+        "pk": 1,
+        "fields": {
+            "chef": 2,
+            "nombre": "Empanadas de Carne",
+            "descripcion": "Tradicionales empanadas colombianas rellenas de carne molida, papa y hogao",
+            "precio": "3500.00",
+            "categoria": 1,
+            "imagen_principal": "platillos/empanadas.jpg",
+            "disponible": true,
+            "tiempo_preparacion": 15
+        }
+    },
+    {
+        "model": "sabores.platillo",
+        "pk": 2,
+        "fields": {
+            "chef": 2,
+            "nombre": "Arepas con Hogao",
+            "descripcion": "Arepas asadas con delicioso hogao de tomate y cebolla",
+            "precio": "6000.00",
+            "categoria": 1,
+            "imagen_principal": "platillos/arepas.jpg",
+            "disponible": true,
+            "tiempo_preparacion": 10
+        }
+    },
+    {
+        "model": "sabores.platillo",
+        "pk": 3,
+        "fields": {
+            "chef": 2,
+            "nombre": "Ajiaco Santafereño",
+            "descripcion": "Sopa tradicional bogotana con pollo, tres tipos de papa, maíz y guascas",
+            "precio": "18000.00",
+            "categoria": 2,
+            "imagen_principal": "platillos/ajiaco.jpg",
+            "disponible": true,
+            "tiempo_preparacion": 45
+        }
+    },
+    {
+        "model": "sabores.platillo",
+        "pk": 4,
+        "fields": {
+            "chef": 2,
+            "nombre": "Sancocho de Gallina",
+            "descripcion": "Caldo tradicional con gallina, yuca, plátano y papa",
+            "precio": "16000.00",
+            "categoria": 2,
+            "imagen_principal": "platillos/sancocho.jpg",
+            "disponible": true,
+            "tiempo_preparacion": 60
+        }
+    },
+    {
+        "model": "sabores.platillo",
+        "pk": 5,
+        "fields": {
+            "chef": 2,
+            "nombre": "Bandeja Paisa",
+            "descripcion": "Plato típico antioqueño con frijoles, arroz, carne molida, chicharrón, huevo, aguacate, arepa y plátano maduro",
+            "precio": "28000.00",
+            "categoria": 3,
+            "imagen_principal": "platillos/bandeja-paisa.jpg",
+            "disponible": true,
+            "tiempo_preparacion": 30
+        }
+    },
+    {
+        "model": "sabores.platillo",
+        "pk": 6,
+        "fields": {
+            "chef": 2,
+            "nombre": "Arroz con Pollo",
+            "descripcion": "Arroz mezclado con pollo desmenuzado, verduras y especias",
+            "precio": "15000.00",
+            "categoria": 3,
+            "imagen_principal": "platillos/arroz-pollo.jpg",
+            "disponible": true,
+            "tiempo_preparacion": 25
+        }
+    },
+    {
+        "model": "sabores.platillo",
+        "pk": 7,
+        "fields": {
+            "chef": 2,
+            "nombre": "Mondongo",
+            "descripcion": "Sopa tradicional con callos de res, papa, yuca y verduras",
+            "precio": "17000.00",
+            "categoria": 2,
+            "imagen_principal": "platillos/mondongo.jpg",
+            "disponible": true,
+            "tiempo_preparacion": 50
+        }
+    },
+    {
+        "model": "sabores.platillo",
+        "pk": 8,
+        "fields": {
+            "chef": 3,
+            "nombre": "Churrasco",
+            "descripcion": "Jugoso corte de res a la parrilla con chimichurri, papas y ensalada",
+            "precio": "32000.00",
+            "categoria": 4,
+            "imagen_principal": "platillos/churrasco.jpg",
+            "disponible": true,
+            "tiempo_preparacion": 20
+        }
+    },
+    {
+        "model": "sabores.platillo",
+        "pk": 9,
+        "fields": {
+            "chef": 3,
+            "nombre": "Punta de Anca",
+            "descripcion": "Corte premium de res asado lentamente, servido con papas criollas",
+            "precio": "35000.00",
+            "categoria": 4,
+            "imagen_principal": "platillos/punta-anca.jpg",
+            "disponible": true,
+            "tiempo_preparacion": 25
+        }
+    },
+    {
+        "model": "sabores.platillo",
+        "pk": 10,
+        "fields": {
+            "chef": 3,
+            "nombre": "Sobrebarriga a la Criolla",
+            "descripcion": "Sobrebarriga cocida lentamente en salsa criolla con papas y yuca",
+            "precio": "26000.00",
+            "categoria": 4,
+            "imagen_principal": "platillos/sobrebarriga.jpg",
+            "disponible": true,
+            "tiempo_preparacion": 40
+        }
+    },
+    {
+        "model": "sabores.platillo",
+        "pk": 11,
+        "fields": {
+            "chef": 4,
+            "nombre": "Arequipe con Queso",
+            "descripcion": "Tradicional postre con dulce de leche y queso fresco",
+            "precio": "8000.00",
+            "categoria": 5,
+            "imagen_principal": "platillos/arequipe-queso.jpg",
+            "disponible": true,
+            "tiempo_preparacion": 5
+        }
+    },
+    {
+        "model": "sabores.platillo",
+        "pk": 12,
+        "fields": {
+            "chef": 4,
+            "nombre": "Tres Leches",
+            "descripcion": "Bizcocho bañado en mezcla de tres leches con crema chantilly",
+            "precio": "9000.00",
+            "categoria": 5,
+            "imagen_principal": "platillos/tres-leches.jpg",
+            "disponible": true,
+            "tiempo_preparacion": 10
+        }
+    },
+    {
+        "model": "sabores.platillo",
+        "pk": 13,
+        "fields": {
+            "chef": 4,
+            "nombre": "Brevas con Arequipe",
+            "descripcion": "Brevas en almíbar rellenas con arequipe",
+            "precio": "7000.00",
+            "categoria": 5,
+            "imagen_principal": "platillos/brevas.jpg",
+            "disponible": true,
+            "tiempo_preparacion": 5
+        }
+    },
+    {
+        "model": "sabores.platillo",
+        "pk": 14,
+        "fields": {
+            "chef": 4,
+            "nombre": "Aguapanela con Queso",
+            "descripcion": "Bebida caliente tradicional de panela con queso fresco",
+            "precio": "5000.00",
+            "categoria": 6,
+            "imagen_principal": "platillos/aguapanela.jpg",
+            "disponible": true,
+            "tiempo_preparacion": 5
+        }
+    },
+    {
+        "model": "sabores.platillo",
+        "pk": 15,
+        "fields": {
+            "chef": 4,
+            "nombre": "Lulada",
+            "descripcion": "Refrescante bebida del Valle del Cauca con lulo, hielo y azúcar",
+            "precio": "6000.00",
+            "categoria": 6,
+            "imagen_principal": "platillos/lulada.jpg",
+            "disponible": true,
+            "tiempo_preparacion": 5
+        }
+    }
+]
