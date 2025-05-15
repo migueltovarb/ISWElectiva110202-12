@@ -28,11 +28,22 @@ class RegistroView(APIView):
     permission_classes = [permissions.AllowAny]
     
     def post(self, request):
-        serializer = UsuarioSerializer(data=request.data)
-        if serializer.is_valid():
-            user = serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        try:
+            # Quitar confirmPassword si existe
+            data = request.data.copy()
+            if 'confirmPassword' in data:
+                data.pop('confirmPassword')
+                
+            serializer = UsuarioSerializer(data=data)
+            if serializer.is_valid():
+                user = serializer.save()
+                return Response(serializer.data, status=status.HTTP_201_CREATED)
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        except Exception as e:
+            import traceback
+            print(f"Error: {str(e)}")
+            print(traceback.format_exc())
+            return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 class UserProfileView(APIView):
     permission_classes = [permissions.IsAuthenticated]
