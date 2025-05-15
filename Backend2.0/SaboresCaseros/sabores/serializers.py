@@ -3,8 +3,10 @@
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
 from .models import Usuario, Categoria, Platillo, DetallePedido, Pedido, Resena, MetodoPago, MensajeSoporte, TicketSoporte
+from rest_framework import serializers
 
 User = get_user_model()
+
 
 class UsuarioSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True)
@@ -17,7 +19,7 @@ class UsuarioSerializer(serializers.ModelSerializer):
         fields = ('id', 'username', 'email', 'first_name', 'last_name', 'password', 'is_staff', 'es_chef', 
                 'telefono', 'direccion', 'foto_perfil', 'pregunta_seguridad', 
                 'respuesta_seguridad')  
-        read_only_fields = ('id', 'username', 'is_staff', 'es_chef')
+        read_only_fields = ('id', 'is_staff', 'es_chef')  # Quitamos 'username' de aquí
         extra_kwargs = {
             'first_name': {'required': False},
             'last_name': {'required': False},
@@ -28,11 +30,20 @@ class UsuarioSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         respuesta = validated_data.pop('respuesta_seguridad', None)
         password = validated_data.pop('password')
-        user = User.objects.create_user(password=password, **validated_data)
+        
+        # Eliminar confirmPassword si viene de React
+        if 'confirmPassword' in validated_data:
+            validated_data.pop('confirmPassword')
+            
+        # Crear el usuario
+        user = Usuario.objects.create_user(password=password, **validated_data)
+        
         if respuesta:
             user.respuesta_seguridad = respuesta.lower()
             user.save()
+        
         return user
+        
     def update(self, instance, validated_data):
         password = validated_data.pop('password', None)
         respuesta = validated_data.pop('respuesta_seguridad', None)
