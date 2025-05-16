@@ -23,6 +23,7 @@ const ReviewModal = ({ pedido, onClose, onSave }) => {
         toast.success('Reseña enviada exitosamente');
         onSave();
         } catch (error) {
+        console.error(error);
         toast.error('Error al enviar reseña');
         }
     };

@@ -129,15 +129,17 @@ const Checkout = () => {
                     </div>
                     
                     <div>
-                        <label className="block text-morado-700 mb-2">
-                            Fecha y Hora de Entrega (Estimada: 55 minutos)
+                        <label htmlFor="fecha_entrega" className="block text-morado-700 mb-2">
+                        Fecha y Hora de Entrega (Estimada: 55 minutos)
                         </label>
                         <input
-                            type="datetime-local"
-                            {...register('fecha_entrega', { required: 'Fecha requerida' })}
-                            className="w-full px-4 py-2 border border-morado-300 rounded-lg bg-gray-100"
-                            readOnly
+                        id="fecha_entrega"
+                        type="datetime-local"
+                        {...register('fecha_entrega', { required: 'Fecha requerida' })}
+                        className="w-full px-4 py-2 border border-morado-300 rounded-lg bg-gray-100"
+                        readOnly
                         />
+
                         <p className="text-sm text-gray-600 mt-1">
                             Tu pedido será entregado aproximadamente a las {new Date(new Date().getTime() + 55 * 60000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                         </p>

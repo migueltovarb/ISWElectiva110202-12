@@ -151,6 +151,7 @@ const AdminDashboardComplete = () => {
                 toast.success('Platillo eliminado');
                 fetchAllData();
             } catch (error) {
+            console.error(error);
                 toast.error('Error al eliminar');
             }
         }
@@ -164,6 +165,7 @@ const AdminDashboardComplete = () => {
             toast.success('Disponibilidad actualizada');
             fetchAllData();
         } catch (error) {
+            console.error(error);
             toast.error('Error al actualizar disponibilidad');
         }
     };

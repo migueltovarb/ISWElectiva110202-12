@@ -76,6 +76,7 @@ const Cart = () => {
                 <button
                     onClick={() => handleRemove(item.id)}
                     className="text-red-500 hover:text-red-700"
+                    aria-label={`Eliminar ${item.nombre}`}
                 >
                     <Trash2 size={20} />
                 </button>

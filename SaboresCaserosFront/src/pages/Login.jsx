@@ -22,6 +22,7 @@ const Login = () => {
         toast.success('¡Bienvenido!');
         navigate('/menu');
         } catch (error) {
+        console.error(error);
         toast.error('Credenciales inválidas');
         }
     };
