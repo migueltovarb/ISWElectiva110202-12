@@ -20,6 +20,7 @@ const AdminPedidos = () => {
         const response = await api.get('/pedidos/');
         setPedidos(response.data);
         } catch (error) {
+        console.error(error);
         toast.error('Error al cargar pedidos');
         } finally {
         setLoading(false);
@@ -32,6 +33,7 @@ const AdminPedidos = () => {
         toast.success('Estado actualizado');
         fetchPedidos();
         } catch (error) {
+        console.error(error);
         toast.error('Error al actualizar estado');
         }
     };

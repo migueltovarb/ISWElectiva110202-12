@@ -30,4 +30,19 @@ export default [
       ],
     },
   },
+  // ✅ NUEVO BLOQUE PARA ARCHIVOS DE TEST
+  {
+    files: ['**/*.test.jsx', '**/*.test.js'],
+    languageOptions: {
+      globals: {
+        ...globals.browser,
+        describe: true,
+        test: true,
+        expect: true,
+        vi: true,
+        beforeEach: true,
+        afterEach: true,
+      },
+    },
+  },
 ]
