@@ -20,6 +20,7 @@ const PaymentMethods = () => {
         const response = await api.get('/metodos-pago/');
         setMetodos(response.data);
         } catch (error) {
+        console.error(error);
         toast.error('Error al cargar métodos de pago');
         } finally {
         setLoading(false);
@@ -33,6 +34,7 @@ const PaymentMethods = () => {
             toast.success('Método de pago eliminado');
             fetchMetodos();
         } catch (error) {
+        console.error(error);
             toast.error('Error al eliminar');
         }
         }
@@ -44,6 +46,7 @@ const PaymentMethods = () => {
         toast.success('Método predeterminado actualizado');
         fetchMetodos();
         } catch (error) {
+        console.error(error);
         toast.error('Error al actualizar');
         }
     };
@@ -51,7 +54,9 @@ const PaymentMethods = () => {
     if (loading) {
         return (
         <div className="flex justify-center items-center h-64">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-morado-600"></div>
+            <div
+             role="status"
+             className="animate-spin rounded-full h-12 w-12 border-b-2 border-morado-600"></div>
         </div>
         );
     }
@@ -107,6 +112,7 @@ const PaymentMethods = () => {
                 <button
                     onClick={() => handleDelete(metodo.id)}
                     className="text-red-600 hover:text-red-800"
+                    aria-label={`Eliminar método ${metodo.id}`}
                 >
                     <Trash2 size={20} />
                 </button>

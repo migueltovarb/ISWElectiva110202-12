@@ -1,4 +1,4 @@
-// src/pages/OrderDetailStatus.jsx
+// src/pages/OrderStatus.jsx
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Clock, CheckCircle, XCircle, Truck, Package, MessageCircle, Star, Send } from 'lucide-react';
@@ -26,6 +26,7 @@ const OrderStatus = () => {
             const response = await api.get(`/pedidos/${id}/`);
             setPedido(response.data);
         } catch (error) {
+            console.error(error);            
             toast.error('Error al cargar el pedido');
         } finally {
             setLoading(false);
@@ -175,7 +176,11 @@ const OrderStatus = () => {
     if (loading) {
         return (
             <div className="flex justify-center items-center h-64">
-                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-morado-600"></div>
+                <div
+                    role="status"
+                    aria-label="Cargando..."
+                    className="animate-spin rounded-full h-12 w-12 border-b-2 border-morado-600"
+                ></div>
             </div>
         );
     }
@@ -244,7 +249,7 @@ const OrderStatus = () => {
                 <div className="border-t pt-4 mt-4">
                     <div className="flex justify-between font-bold text-lg">
                         <span>Total:</span>
-                        <span>${pedido.total}</span>
+                        <span data-testid="total-amount">${pedido.total}</span>
                     </div>
                 </div>
             </div>

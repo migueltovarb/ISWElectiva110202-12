@@ -19,6 +19,7 @@ const OrderHistory = () => {
         const response = await api.get('/pedidos/');
         setPedidos(response.data);
         } catch (error) {
+        console.error(error);
         toast.error('Error al cargar los pedidos');
         } finally {
         setLoading(false);
