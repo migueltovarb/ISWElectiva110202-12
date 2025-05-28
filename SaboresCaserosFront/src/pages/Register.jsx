@@ -16,6 +16,7 @@ const Register = () => {
         toast.success('¡Registro exitoso! Por favor inicia sesión');
         navigate('/login');
         } catch (error) {
+        console.error(error);
         toast.error('Error en el registro. Intenta nuevamente');
         }
     };

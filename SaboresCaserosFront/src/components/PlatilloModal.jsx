@@ -44,6 +44,7 @@ const PlatilloModal = ({ platillo, categorias, onClose, onSave }) => {
   }, []);
 
   const onSubmit = async (data) => {
+     console.log('FORM DATA ENVIADO:', data);
     try {
       const formData = new FormData();
       Object.keys(data).forEach((key) => {
