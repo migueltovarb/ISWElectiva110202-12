@@ -106,16 +106,9 @@ WSGI_APPLICATION = 'SaboresCaseros.wsgi.application'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': config('DATABASE_NAME'),
-        'USER': config('DATABASE_USER'),
-        'PASSWORD': config('DATABASE_PASSWORD'),
-        'HOST': config('DATABASE_HOST'),
-        'PORT': config('DATABASE_PORT'),
     'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))
     }
-}
+
 
 
 
