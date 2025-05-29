@@ -7,36 +7,40 @@ on:
 
 jobs:
   backend:
-    name: Deploy Django Backend
-    runs-on: ubuntu-latest
+  name: Deploy Django Backend
+  runs-on: ubuntu-latest
 
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+  env:
+    SECRET_KEY: "django-insecure-r2k3!3vzj#54d1p*3z$5f@m$&8cgf5^+f$y9vv7n4jx$!1=9-b"
 
-      - name: Setup Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.11'
+  steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
 
-      - name: Install dependencies
-        run: |
-          cd SaboresCaserosBack
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
 
-      - name: Run migrations and collect static
-        run: |
-          cd SaboresCaserosBack/SaboresCaseros
-          python manage.py migrate
-          python manage.py collectstatic --noinput
+    - name: Install dependencies
+      run: |
+        cd SaboresCaserosBack/SaboresCaseros
+        python -m pip install --upgrade pip
+        pip install -r ../requirements.txt
 
-      - name: Deploy Django to Azure
-        uses: azure/webapps-deploy@v2
-        with:
-          app-name: saborescaseros-back
-          publish-profile: ${{ secrets.AZURE_BACKEND_PUBLISH_PROFILE }}
-          package: SaboresCaserosBack/SaboresCaseros
+    - name: Run migrations and collect static files
+      run: |
+        cd SaboresCaserosBack/SaboresCaseros
+        python manage.py migrate
+        python manage.py collectstatic --noinput
+
+    - name: Deploy Django to Azure App Service
+      uses: azure/webapps-deploy@v2
+      with:
+        app-name: saborescaseros-back
+        publish-profile: ${{ secrets.AZURE_BACKEND_PUBLISH_PROFILE }}
+        package: SaboresCaserosBack/SaboresCaseros
+
 
   frontend:
     name: Deploy React Frontend
