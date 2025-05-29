@@ -11,7 +11,8 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      SECRET_KEY: "django-insecure-r2k3!3vzj#54d1p*3z$5f@m$&8cgf5^+f$y9vv7n4jx$!1=9-b"
+      SECRET_KEY: "021021maria"
+      DATABASE_URL: "postgresql://postgres:qLNLdZGkDvrkeKVvrpkwGRhLzjJWqGTf@nozomi.proxy.rlwy.net:25563/railway"
 
     steps:
       - name: Checkout code
@@ -40,6 +41,7 @@ jobs:
           app-name: saborescaseros-back
           publish-profile: ${{ secrets.AZURE_BACKEND_PUBLISH_PROFILE }}
           package: SaboresCaserosBack/SaboresCaseros
+
 
   frontend:
     name: Deploy React Frontend
