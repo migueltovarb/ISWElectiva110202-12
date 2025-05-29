@@ -7,40 +7,39 @@ on:
 
 jobs:
   backend:
-  name: Deploy Django Backend
-  runs-on: ubuntu-latest
+    name: Deploy Django Backend
+    runs-on: ubuntu-latest
 
-  env:
-    SECRET_KEY: "django-insecure-r2k3!3vzj#54d1p*3z$5f@m$&8cgf5^+f$y9vv7n4jx$!1=9-b"
+    env:
+      SECRET_KEY: "django-insecure-r2k3!3vzj#54d1p*3z$5f@m$&8cgf5^+f$y9vv7n4jx$!1=9-b"
 
-  steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-    - name: Setup Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.11'
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
 
-    - name: Install dependencies
-      run: |
-        cd SaboresCaserosBack/SaboresCaseros
-        python -m pip install --upgrade pip
-        pip install -r ../requirements.txt
+      - name: Install dependencies
+        run: |
+          cd SaboresCaserosBack/SaboresCaseros
+          python -m pip install --upgrade pip
+          pip install -r ../requirements.txt
 
-    - name: Run migrations and collect static files
-      run: |
-        cd SaboresCaserosBack/SaboresCaseros
-        python manage.py migrate
-        python manage.py collectstatic --noinput
+      - name: Run migrations and collect static files
+        run: |
+          cd SaboresCaserosBack/SaboresCaseros
+          python manage.py migrate
+          python manage.py collectstatic --noinput
 
-    - name: Deploy Django to Azure App Service
-      uses: azure/webapps-deploy@v2
-      with:
-        app-name: saborescaseros-back
-        publish-profile: ${{ secrets.AZURE_BACKEND_PUBLISH_PROFILE }}
-        package: SaboresCaserosBack/SaboresCaseros
-
+      - name: Deploy Django to Azure App Service
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: saborescaseros-back
+          publish-profile: ${{ secrets.AZURE_BACKEND_PUBLISH_PROFILE }}
+          package: SaboresCaserosBack/SaboresCaseros
 
   frontend:
     name: Deploy React Frontend
