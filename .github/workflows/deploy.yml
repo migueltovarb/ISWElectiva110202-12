@@ -1,0 +1,66 @@
+name: CI/CD - Deploy Django & React to Azure
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  backend:
+    name: Deploy Django Backend
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          cd SaboresCaserosBack
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run migrations and collect static
+        run: |
+          cd SaboresCaserosBack
+          python manage.py migrate
+          python manage.py collectstatic --noinput
+
+      - name: Deploy Django to Azure
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: saborescaseros-back
+          publish-profile: ${{ secrets.AZURE_BACKEND_PUBLISH_PROFILE }}
+          package: SaboresCaserosBack
+
+  frontend:
+    name: Deploy React Frontend
+    runs-on: ubuntu-latest
+    needs: backend
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install and Build React
+        run: |
+          cd SaboresCaserosFront
+          npm install
+          npm run build
+
+      - name: Deploy React to Azure
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: saborescaseros-front
+          publish-profile: ${{ secrets.AZURE_FRONTEND_PUBLISH_PROFILE }}
+          package: SaboresCaserosFront/dist
